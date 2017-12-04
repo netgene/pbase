@@ -5,6 +5,9 @@
 #include <time.h>
 #include <sys/time.h>
 #include <stdint.h>
+#include <sys/syscall.h>
+#include <pthread.h>
+#include <sys/types.h> 
 
 using namespace std;
 

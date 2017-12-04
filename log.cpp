@@ -32,7 +32,7 @@ void Logger::logprint(T t, Rest... rest)
 void Logger::log(uint level, const char *format, ...)
 {
 	char str[1000];
-	int l = snprintf(str, 1000, "[%s][%s] ", s_level_str[level-1], get_time_str().c_str());
+	int l = snprintf(str, 1000, "[%s][%s][%ld] ", s_level_str[level-1], get_time_str().c_str(), pthread_self());
 	//fprintf(str, "[%s-%d][%s]", get_time_str(true));
     va_list ap;
     va_start(ap, format);
