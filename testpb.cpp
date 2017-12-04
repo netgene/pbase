@@ -9,9 +9,9 @@ int main()
 	int i = 1;
 	//logger::Logger::GetInstance().logprint(i);
 	//logger::Logger::GetInstance().logprint("log2:", 456);
-	LOG_INFO("123:%d", 123);
-	LOG_INFO("123:%d", 123);
-	LOG_INFO("123:%d", 123);
-	LOG_INFO("123:%d", 123);
+	LOG_INFO("info:%d", 123);
+	LOG_WARN("warn:%d", 123);
+	LOG_ERROR("error:%d", 123);
+	LOG_DEBUG("debug:%d", 123);
 	return 0;
 }

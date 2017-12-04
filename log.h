@@ -20,7 +20,7 @@ enum _log_level
     LOG_LEVEL_MAX
 };
 
-static const char* s_level_str[] = {"ERROR", "WARNING", "INFO", "DEBUG"};
+static const char* s_level_str[] = {"ERRO", "WARN", "INFO", "DBUG"};
 
 #define LOG_DEBUG(format, ...)      pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_DEBUG, format, ## __VA_ARGS__)
 #define LOG_INFO(format, ...)       pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_INFO, format, ## __VA_ARGS__)
