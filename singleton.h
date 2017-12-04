@@ -26,7 +26,7 @@ protected:
 template<typename T>
 Singleton<T>::Singleton()
 {
-	cout << __FUNCTION__ << endl;
+	//cout << __FUNCTION__ << endl;
 }
 
 } //namespace pbase
