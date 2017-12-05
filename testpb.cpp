@@ -3,15 +3,16 @@
 
 using namespace pbase;
 
-int main()
+int main(int argc, char**argv)
 {
 	char a[10] = "ttest";
 	int i = 1;
-	//logger::Logger::GetInstance().logprint(i);
-	//logger::Logger::GetInstance().logprint("log2:", 456);
-	LOG_INFO("info:%d", 123);
-	LOG_WARN("warn:%d", 123);
-	LOG_ERROR("error:%d", 123);
-	LOG_DEBUG("debug:%d", 123);
+
+	pbase::logger::Logger::GetInstance().init(pbase::logger::LOG_LEVEL_DEBUG, pbase::logger::LOG_LEVEL_INFO, "testpb", "./log/");
+
+	LOG_INFO("info:%d\n", 123);
+	LOG_WARN("warn:%d\n", 123);
+	LOG_ERROR("error:%d\n", 123);
+	LOG_DEBUG("debug:%d\n", 123);
 	return 0;
 }

@@ -9,6 +9,12 @@
 #include <pthread.h>
 #include <sys/types.h> 
 
+#include <cstdio>
+#include <atomic>
+#include <mutex>
+#include <sys/stat.h>
+#include <unistd.h>
+
 using namespace std;
 
 namespace pbase {
@@ -43,13 +49,27 @@ public:
 	template<typename T, typename... Rest>
 	void logprint(T t, Rest... rest);
 
+	void init(int file_level, int terminal_level, const std::string &app, const std::string &path);
+
 	void log(uint level, const char *format, ...);
 private:
 	string get_time_str();
 	
 private:
-	string filename;
 	string logtime;
+	int file_log_level;
+	int terminal_log_level;
+
+    //LOG_LEVEL m_level;
+    std::string m_file_name;
+    std::string m_file_full_name;
+    FILE *m_file;
+    std::atomic<uint32_t> m_year;
+    std::atomic<uint32_t> m_month;
+    std::atomic<uint32_t> m_day;
+    std::atomic<uint32_t> m_enter_num {0};
+    std::mutex m_mutex;
+
 };
 
 } //namespace logger
