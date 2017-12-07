@@ -81,6 +81,7 @@ void Logger::log(uint level, const char *format, ...)
         open();
     }
 
+    printf("before count:%d\n", m_countline);
     std::lock_guard<std::mutex> guard(m_mutex);
 	char str_body[256];
     char str_head[50];
@@ -88,7 +89,8 @@ void Logger::log(uint level, const char *format, ...)
     va_list ap;
 
     //writelog
-    int num_head = snprintf(str_head, 50, "[%s][%s]", s_level_str[level-1], get_time_str().c_str());
+    pthread_t th = pthread_self();
+    int num_head = snprintf(str_head, 50, "[%s][%s][%x]", s_level_str[level-1], get_time_str().c_str(), th);
     va_start(ap, format);
     vsnprintf(str_body, 256, format, ap);
 
@@ -103,6 +105,7 @@ void Logger::log(uint level, const char *format, ...)
     va_end(ap);
 
     m_countline++;
+    printf("count:%d\n", m_countline);
 }
 
 bool Logger::is_log_goto_nextday()
