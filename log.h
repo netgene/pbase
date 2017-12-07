@@ -40,6 +40,7 @@ class Logger : public Singleton<Logger> {
 public:
 	Logger();
 
+	/*
 	template<typename T>
 	void print_args(T t);
 
@@ -48,10 +49,12 @@ public:
 
 	template<typename T, typename... Rest>
 	void logprint(T t, Rest... rest);
-
+	*/
 	void init(int file_level, int terminal_level, const std::string &app, const std::string &path);
 
 	void log(uint level, const char *format, ...);
+	void flush();
+	void close();
 private:
 	string get_time_str();
 	

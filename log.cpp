@@ -9,6 +9,7 @@ Logger::Logger()
     terminal_log_level = LOG_LEVEL_ERROR;
 }
 
+/*
 template<typename T>
 void Logger::print_args(T t)
 {	
@@ -28,6 +29,7 @@ void Logger::logprint(T t, Rest... rest)
 	cout << __FUNCTION__ << ":" ;
 	print_args(t, rest...);
 }
+*/
 
 void Logger::init(int file_level, int terminal_level, const std::string &app, const std::string &path)
 {
@@ -120,6 +122,16 @@ string Logger::get_time_str()
             ptime->tm_hour, ptime->tm_min, ptime->tm_sec, microsec);
     string s(m_time_str);
     return s;
+}
+
+void Logger::flush()
+{
+    fflush(m_file);
+}
+
+void Logger::close()
+{
+    fclose(m_file);
 }
 
 } //namespace logger
