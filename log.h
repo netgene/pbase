@@ -40,16 +40,7 @@ class Logger : public Singleton<Logger> {
 public:
 	Logger();
 	~ Logger();
-	/*
-	template<typename T>
-	void print_args(T t);
 
-	template<typename T, typename... Rest>
-	void print_args(T t, Rest... rest);
-
-	template<typename T, typename... Rest>
-	void logprint(T t, Rest... rest);
-	*/
 	void init(int file_level, int terminal_level, int maxline, const std::string &app, const std::string &path);
 
 	void log(uint level, const char *format, ...);
@@ -61,11 +52,10 @@ private:
 	string get_time_str();
 	
 private:
-	string logtime;
 	int m_file_log_level;
 	int m_terminal_log_level;
-
-    //LOG_LEVEL m_level;
+    std::string m_app;
+    std::string m_path;	
     std::string m_file_name_end;
     std::string m_file_name_logging;
     FILE *m_file;
@@ -74,8 +64,6 @@ private:
     uint32_t m_year;
     uint32_t m_month;
     uint32_t m_day;
-    std::string m_app;
-    std::string m_path;
     std::mutex m_mutex;
 
 };

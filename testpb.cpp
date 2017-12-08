@@ -7,7 +7,6 @@ using namespace pbase;
 void loginfo()
 {
 	LOG_INFO("info:%d\n", 123);
-	sleep(2);
 	LOG_INFO("info:%d\n", 456);
 }
 

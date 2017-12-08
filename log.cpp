@@ -8,28 +8,6 @@ Logger::Logger()
 
 }
 
-/*
-template<typename T>
-void Logger::print_args(T t)
-{	
-	cout << t << endl;
-}
-
-template<typename T, typename... Rest>
-void Logger::print_args(T t, Rest... rest)
-{	
-	cout << t ;
-	print_args(rest...);
-}
-
-template<typename T, typename... Rest>
-void Logger::logprint(T t, Rest... rest)
-{	
-	cout << __FUNCTION__ << ":" ;
-	print_args(t, rest...);
-}
-*/
-
 void Logger::init(int file_level, int terminal_level, int maxline, const std::string &app, const std::string &path)
 {
     m_file_log_level = file_level;
@@ -39,8 +17,7 @@ void Logger::init(int file_level, int terminal_level, int maxline, const std::st
     m_app = app;
 
     system((std::string("mkdir -p ") + path).c_str());
-    if(path[path.length() - 1] != '/')
-    {
+    if(path[path.length() - 1] != '/') {
         const_cast<std::string&>(path).append("/");
     }
     
@@ -81,16 +58,15 @@ void Logger::log(uint level, const char *format, ...)
         open();
     }
 
-    printf("before count:%d\n", m_countline);
     std::lock_guard<std::mutex> guard(m_mutex);
-	char str_body[256];
+    char str_body[256];
     char str_head[50];
 
     va_list ap;
 
     //writelog
     pthread_t th = pthread_self();
-    int num_head = snprintf(str_head, 50, "[%s][%s][%x]", s_level_str[level-1], get_time_str().c_str(), th);
+    int num_head = snprintf(str_head, 50, "[%s][%s][%x]", s_level_str[level-1], get_time_str().c_str(), static_cast<unsigned int>(th));
     va_start(ap, format);
     vsnprintf(str_body, 256, format, ap);
 
@@ -105,7 +81,6 @@ void Logger::log(uint level, const char *format, ...)
     va_end(ap);
 
     m_countline++;
-    printf("count:%d\n", m_countline);
 }
 
 bool Logger::is_log_goto_nextday()
