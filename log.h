@@ -60,7 +60,7 @@ private:
     std::string m_file_name_logging;
     FILE *m_file;
     int32_t m_maxline;
-    int32_t m_countline;
+    atomic<int32_t> m_countline;
     uint32_t m_year;
     uint32_t m_month;
     uint32_t m_day;
