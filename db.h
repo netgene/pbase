@@ -9,8 +9,7 @@
 using namespace sql;  
 using namespace std;  
 
-namespace gomsg
-{
+namespace gomsg {
 
 class MysqlConn
 {
@@ -24,7 +23,6 @@ private:
     Connection *con; 
     Statement *state; 
     ResultSet *result;
-
 };
 
 }//namespace gomsg end
