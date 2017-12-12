@@ -1,5 +1,7 @@
 #include "db.h"
 
+namespace gomsg {
+
 void MysqlConn::Connect()   
 {  
     driver = sql::mysql::get_mysql_driver_instance();  
@@ -28,3 +30,5 @@ void MysqlConn::DisConnect()
     delete state;  
     delete con;
 }
+
+}//namespace gomsg end
