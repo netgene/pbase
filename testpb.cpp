@@ -15,7 +15,11 @@ int main(int argc, char**argv)
 
 	gomsg::MysqlConn msql;
 	msql.Connect();
-	msql.Query();
+	while(1) {
+		msql.Query();
+		sleep(60);
+	}
+	
 	msql.DisConnect();
 
 	return 0;
