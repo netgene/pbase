@@ -21,7 +21,7 @@ void MysqlConn::Query()
         int id = result->getInt("ID");  
         string name = result->getString("name");  
         //cout << id << " : " << name << endl;  
-        LOG_INFO("id:%d name:%s\n", id, name);
+        LOG_INFO("id:%d name:%s\n", id, name.c_str());
     }  
 }
 
