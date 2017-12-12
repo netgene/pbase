@@ -11,8 +11,7 @@ using namespace std;
 
 namespace gomsg {
 
-class MysqlConn
-{
+class MysqlConn {
 public:
 	void Connect();
 	void DisConnect();
