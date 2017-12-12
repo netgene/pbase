@@ -15,6 +15,9 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
+#ifndef PBASE_LOG_H
+#define PBASE_LOG_H
+
 using namespace std;
 
 namespace pbase {
@@ -70,3 +73,5 @@ private:
 
 } //namespace logger
 } //namespace pbase
+
+#endif
