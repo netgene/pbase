@@ -4,6 +4,7 @@
 #include <thread>
 
 using namespace pbase;
+using namespace gomsg;
 
 int main(int argc, char**argv)
 {
