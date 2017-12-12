@@ -12,10 +12,10 @@ int main(int argc, char**argv)
 
 	pbase::logger::Logger::GetInstance().init(pbase::logger::LOG_LEVEL_DEBUG, pbase::logger::LOG_LEVEL_ERROR, 2, "testpb", "./log/");
 
-	MysqlConn mysql;
-	mysql.Connect();
-	mysql.Query();
-	mysql.DisConnect();
+	MysqlConn msql;
+	msql.Connect();
+	msql.Query();
+	msql.DisConnect();
 
 	return 0;
 }
