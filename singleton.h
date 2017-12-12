@@ -1,5 +1,8 @@
 #include <iostream>
 
+#ifndef PBASE_SINGLETON_H
+#define PBASE_SINGLETON_H
+
 using namespace std;
 namespace pbase {
 
@@ -30,3 +33,5 @@ Singleton<T>::Singleton()
 }
 
 } //namespace pbase
+
+#endif

@@ -3,6 +3,9 @@
 #include <statement.h> 
 #include "log.h"
 
+#ifndef GOMSG_DB_H
+#define GOMSG_DB_H
+
 using namespace sql;  
 using namespace std;  
 
@@ -25,3 +28,5 @@ private:
 };
 
 }//namespace gomsg end
+
+#endif
