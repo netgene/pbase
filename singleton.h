@@ -6,7 +6,7 @@ namespace pbase {
 template<typename T>
 class Singleton  
 {  
- public:  
+public:  
  	// static 静态函数 全局访问接口
     static T& GetInstance()
 	{  
