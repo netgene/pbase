@@ -13,12 +13,12 @@ namespace gomsg {
 
 class MysqlConn {
 public:
-	void Connect();
-	void DisConnect();
-	void Query();
+    void Connect();
+    void DisConnect();
+    void Query();
 
 private:
-	mysql::MySQL_Driver *driver;  
+    mysql::MySQL_Driver *driver;  
     Connection *con; 
     Statement *state; 
     ResultSet *result;

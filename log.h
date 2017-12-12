@@ -41,22 +41,22 @@ static const char* s_level_str[] = {"ERRO", "WARN", "INFO", "DBUG"};
 
 class Logger : public Singleton<Logger> {
 public:
-	Logger();
-	~ Logger();
+    Logger();
+    ~ Logger();
 
-	void init(int file_level, int terminal_level, int maxline, const std::string &app, const std::string &path);
+    void init(int file_level, int terminal_level, int maxline, const std::string &app, const std::string &path);
 
-	void log(uint level, const char *format, ...);
-	void flush();
-	void close();
-	void open();
-	bool is_log_goto_nextday();
+    void log(uint level, const char *format, ...);
+    void flush();
+    void close();
+    void open();
+    bool is_log_goto_nextday();
 private:
-	string get_time_str();
-	
+    string get_time_str();
+
 private:
-	int m_file_log_level;
-	int m_terminal_log_level;
+    int m_file_log_level;
+    int m_terminal_log_level;
     std::string m_app;
     std::string m_path;	
     std::string m_file_name_end;
