@@ -1,4 +1,4 @@
-#include "singleton.h"
+#include "singletonts.h"
 #include <iostream>
 #include <string>
 #include <stdarg.h>
@@ -34,12 +34,12 @@ enum _log_level
 
 static const char* s_level_str[] = {"ERRO", "WARN", "INFO", "DBUG"};
 
-#define LOG_DEBUG(format, ...)      pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_DEBUG, format, ## __VA_ARGS__)
-#define LOG_INFO(format, ...)       pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_INFO, format, ## __VA_ARGS__)
-#define LOG_WARN(format, ...)       pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_WARNING, format, ## __VA_ARGS__)
-#define LOG_ERROR(format, ...)      pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_ERROR, format, ## __VA_ARGS__)
+#define LOG_DEBUG(format, ...)      pbase::logger::Logger::GetInstance()->log(pbase::logger::LOG_LEVEL_DEBUG, format, ## __VA_ARGS__)
+#define LOG_INFO(format, ...)       pbase::logger::Logger::GetInstance()->log(pbase::logger::LOG_LEVEL_INFO, format, ## __VA_ARGS__)
+#define LOG_WARN(format, ...)       pbase::logger::Logger::GetInstance()->log(pbase::logger::LOG_LEVEL_WARNING, format, ## __VA_ARGS__)
+#define LOG_ERROR(format, ...)      pbase::logger::Logger::GetInstance()->log(pbase::logger::LOG_LEVEL_ERROR, format, ## __VA_ARGS__)
 
-class Logger : public Singleton<Logger> {
+class Logger : public SingletonTs<Logger> {
 public:
     Logger();
     ~ Logger();
