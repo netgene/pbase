@@ -17,7 +17,7 @@ protected:
     SingletonTs();
     SingletonTs(const T& other);
     SingletonTs & operator=(const T& other);
-    static pthread_mutex_t mutex;
+    static std::mutex m_mutex;
     static T* p;
 };
 
@@ -25,11 +25,10 @@ template<typename T>
 T* SingletonTs<T>::GetInstance()
 {
     if(p == NULL) {
-        pthread_mutex_lock(&mutex);
+        std::lock_guard<std::mutex> guard(m_mutex);
         if(p == NULL) {
             p = new SingletonTs();
         }
-        pthread_mutex_unlock(&mutex);
     }
 }
 
