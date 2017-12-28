@@ -1,4 +1,4 @@
-#include "singletonts.h"
+#include "singleton.h"
 #include <iostream>
 #include <string>
 #include <stdarg.h>
@@ -39,7 +39,7 @@ static const char* s_level_str[] = {"ERRO", "WARN", "INFO", "DBUG"};
 #define LOG_WARN(format, ...)       pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_WARNING, format, ## __VA_ARGS__)
 #define LOG_ERROR(format, ...)      pbase::logger::Logger::GetInstance().log(pbase::logger::LOG_LEVEL_ERROR, format, ## __VA_ARGS__)
 
-class Logger : public SingletonTs<Logger> {
+class Logger : public Singleton<Logger> {
 public:
     Logger();
     ~ Logger();
