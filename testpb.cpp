@@ -2,20 +2,35 @@
 #include "db.h"
 #include <iostream>
 #include <thread>
+#include <csignal>
 
 using namespace pbase;
+using namespace pbase::logger;
 using namespace gomsg;
+
+static bool bexit = false;
+
+void quit(int)
+{
+	LOG_INFO("SIGINT\n");
+	bexit = true;
+}
+void flush(int)
+{
+	LOG_INFO("SIGUSR2\n");
+	Logger::GetInstance()->flush();
+}
 
 int main(int argc, char**argv)
 {
-	char a[10] = "ttest";
-	int i = 1;
+	signal(SIGUSR2, flush);
+	signal(SIGINT, quit);
 
-	pbase::logger::Logger::GetInstance().init(pbase::logger::LOG_LEVEL_DEBUG, pbase::logger::LOG_LEVEL_ERROR, 2, "testpb", "./log/");
+	Logger::GetInstance()->init(pbase::logger::LOG_LEVEL_DEBUG, pbase::logger::LOG_LEVEL_INFO, 10000, "testpb", "./log/");
 
 	gomsg::MysqlConn msql;
 	msql.Connect();
-	while(1) {
+	while(!bexit) {
 		msql.Query();
 		sleep(60);
 	}
