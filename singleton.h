@@ -1,7 +1,7 @@
-#include <iostream>
-
 #ifndef PBASE_SINGLETON_H
 #define PBASE_SINGLETON_H
+
+#include <iostream>
 
 using namespace std;
 namespace pbase {
